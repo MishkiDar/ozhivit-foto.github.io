@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Обнимашки с прошлым — оживить фото</title>
-    <!-- Шрифты: Geist, Onest, Instrument Serif (как в примере) -->
+    <!-- Шрифты: Geist, Onest, Instrument Serif -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
@@ -270,37 +270,37 @@
             opacity: 0.7;
         }
 
-        .story-grid {
+        /* Новый стиль для видео-блока */
+        .video-story-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             align-items: center;
+            margin: 40px 0;
         }
 
-        .story-image {
+        .video-container {
             border-radius: var(--border-radius-card);
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            aspect-ratio: 1 / 1.2;
-            background: #eee;
+            box-shadow: var(--shadow-hover);
+            background: #000;
+            aspect-ratio: 16 / 9;
+            width: 100%;
         }
 
-        .story-image .placeholder-img {
+        .video-container video {
             width: 100%;
             height: 100%;
-            background: #d4c2b2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 3rem;
+            display: block;
+            object-fit: cover;
+            pointer-events: none; /* чтобы видео не перехватывало клик, если нужно */
         }
 
-        .story-text {
+        .video-text {
             padding: 20px;
         }
 
-        .story-text p {
+        .video-text p {
             font-size: 1.2rem;
             margin-bottom: 20px;
             color: var(--color-graphite);
@@ -486,8 +486,9 @@
             .nav-links {
                 display: none;
             }
-            .story-grid {
+            .video-story-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
             .hero-photo-frame {
                 width: 150px;
@@ -507,14 +508,14 @@
         <a href="/" class="logo">обнимашки.с.прошлым</a>
         <div class="nav-links">
             <a href="#pain">боль</a>
-            <a href="#how">как оживим</a>
+            <a href="#how-video">как оживим</a> <!-- обновлена ссылка -->
             <a href="#tariffs">цены</a>
             <a href="#questions">вопросы</a>
             <a href="https://t.me/your_photo_bot" class="nav-cta" target="_blank">telegram</a>
         </div>
     </nav>
 
-    <!-- ГЕРОЙ: ЗАХВАТ ЭМОЦИЙ (СМЫСЛЫ ИЗ ВОРОНКИ) -->
+    <!-- ГЕРОЙ: ЗАХВАТ ЭМОЦИЙ -->
     <section class="hero" id="hero">
         <div class="hero-content">
             <div class="hero-photo-frame">
@@ -585,22 +586,21 @@
         <p style="max-width: 700px; margin: 0 auto 40px; font-size: 1.2rem;">Не предлагаем скучную склейку. Мы создаём «Обнимашки с прошлым» — способ пережить эмоцию заново.</p>
     </section>
 
-    <!-- КАК МЫ ОЖИВЛЯЕМ (ОТВЕТ НА СТРАХ) -->
-    <section class="container" id="how">
-        <div class="story-grid">
-            <div class="story-image">
-                <div class="placeholder-img">🖼️→🎬</div>
+    <!-- НОВЫЙ ВИДЕО-БЛОК "КАК МЫ ОЖИВЛЯЕМ ФОТО" (ВСТАВЛЕН ПЕРЕД БЛОКОМ ВОПРОСОВ) -->
+    <section class="container" id="how-video">
+        <div class="video-story-grid">
+            <div class="video-container">
+                <!-- ВСТАВКА ВИДЕО С VK: зациклено, без звука, без элементов управления, автостарт -->
+                <video src="https://vkvideo.ru/clip-58879883_456239020" autoplay loop muted playsinline style="width:100%; height:100%; object-fit: cover; pointer-events: none;"></video>
+                <!-- Примечание: VK видео не всегда даёт прямую ссылку на .mp4, но если ссылка ведёт на клип, такой формат может не работать. Для гарантии можно использовать iframe, но тогда зациклить сложнее. Если видео не загрузится, замените src на прямую mp4-ссылку. -->
+                <!-- Для надёжности я продублирую ссылку через тег iframe с параметрами, но с iframe сложнее управлять циклом. Лучше использовать прямой mp4, но на VK его получить сложно. Оставлю video src как есть, а если не сработает, вы сможете вставить прямую ссылку на файл .mp4. -->
             </div>
-            <div class="story-text">
-                <span class="subhead">реставрация + анимация</span>
-                <h2>Как мы оживляем фото без «дипфейк»-эффекта</h2>
-                <p>✓ Убираем царапины, шумы, восстанавливаем цвет — даже снимки 50-х годов.</p>
-                <p>✓ Анимируем лица: улыбка, взгляд, поворот головы, воздушный поцелуй. Только естественно, не страшно.</p>
-                <p>✓ Добавляем музыку, которая попадает в сердце. (Мы поможем выбрать.)</p>
-                <p>✓ Превращаем «мыло» в винтаж — никакой дешевизны.</p>
-                <div style="margin-top: 30px;">
-                    <a href="https://t.me/your_photo_bot" class="btn-primary" style="padding: 15px 40px;" target="_blank">примеры в telegram</a>
-                </div>
+            <div class="video-text">
+                <span class="subhead">смотрите сами</span>
+                <h2>Как мы оживляем фото</h2>
+                <p>Это не дипфейк и не страшная анимация. Мы бережно реставрируем каждый снимок, убираем царапины, восстанавливаем цвет и делаем так, чтобы лицо двигалось естественно — улыбка, взгляд, лёгкий кивок.</p>
+                <p>В этом видео — примеры наших работ. Всего за пару дней ваши родные снова «заговорят» и подарят вам тёплые мурашки.</p>
+                <a href="https://t.me/your_photo_bot" class="btn-primary" style="margin-top: 20px; display: inline-block;" target="_blank">🎬 хочу так же</a>
             </div>
         </div>
     </section>
@@ -660,7 +660,7 @@
         </div>
     </section>
 
-    <!-- СПЕЦПРЕДЛОЖЕНИЕ: 390 перечеркнуто / 0₽ (ГЛАВНЫЙ ТРИГГЕР) -->
+    <!-- СПЕЦПРЕДЛОЖЕНИЕ: 390 перечеркнуто / 0₽ -->
     <section class="container">
         <div class="special-offer">
             <span class="subhead">акция недели</span>
@@ -713,7 +713,7 @@
         </div>
     </section>
 
-    <!-- ПОСЛЕДНИЙ ПРИЗЫВ (ПОВТОР) -->
+    <!-- ПОСЛЕДНИЙ ПРИЗЫВ -->
     <section style="padding: 40px 0; text-align: center;">
         <div class="container">
             <h2>Не дайте фотографиям умереть</h2>
