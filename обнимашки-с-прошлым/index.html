@@ -164,31 +164,87 @@
             z-index: 2;
         }
 
+        /* === УМЕНЬШЕННАЯ ВЕРТИКАЛЬНАЯ ДЕРЕВЯННАЯ РАМКА (в 1.5 раза меньше) === */
         .hero-photo-frame {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 30px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid rgba(255,255,255,0.5);
-            box-shadow: var(--shadow-sm);
-            background: white;
-            padding: 8px;
+            width: 180px;           /* Было 260px / 1.44 ≈ 180px */
+            margin: 0 auto 30px;    /* Уменьшил нижний отступ */
+            position: relative;
+            filter: drop-shadow(0 15px 20px -8px rgba(0,0,0,0.3));
         }
 
-        .hero-video-container {
+        /* Сама деревянная рамка (фон) */
+        .wooden-frame {
+            background: #8b6f4c;
+            padding: 12px 10px 18px 10px; /* Пропорционально уменьшил */
+            border-radius: 8px 8px 12px 12px;
+            box-shadow: 
+                inset 0 0 0 1.5px #e9d6b0,
+                inset 0 0 0 4px #a5835e,
+                0 4px 0 0 #5a3f2b,
+                0 6px 10px rgba(0,0,0,0.2);
+            background-image: 
+                linear-gradient(45deg, rgba(255,215,140,0.2) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255,215,140,0.2) 25%, transparent 25%),
+                linear-gradient(135deg, #7a5a3a 0%, #a77b51 40%, #7a5a3a 100%);
+            background-size: 15px 15px, 15px 15px, 100% 100%;
+            background-position: 0 0, 7px 7px, 0 0;
+            position: relative;
+            border: 1px solid #c9a87c;
+        }
+
+        /* Эффект деревянной текстуры (полоски) */
+        .wooden-frame::before {
+            content: "";
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px dashed rgba(210, 180, 140, 0.4);
+            border-radius: 5px;
+            pointer-events: none;
+        }
+
+        /* Винтажный уголок (чуть меньше) */
+        .wooden-frame::after {
+            content: "⚜️";
+            position: absolute;
+            bottom: -6px;
+            right: -6px;
+            font-size: 18px;
+            opacity: 0.6;
+            transform: rotate(15deg);
+            filter: drop-shadow(1px 3px 3px rgba(0,0,0,0.2));
+        }
+
+        /* Контейнер для видео */
+        .frame-video-container {
+            aspect-ratio: 9 / 16;
             width: 100%;
-            height: 100%;
-            border-radius: 50%;
+            border-radius: 4px;
             overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+            border: 1px solid #fffaf0;
         }
 
-        .hero-video-container iframe {
+        .frame-video-container iframe {
             width: 100%;
             height: 100%;
             border: none;
-            transform: scale(1.2); /* Небольшое увеличение, чтобы видео заполнило круг */
-            pointer-events: none; /* Чтобы видео не перехватывало клики */
+            pointer-events: none;
+        }
+
+        /* Подпись под рамкой (чуть меньше) */
+        .frame-caption {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            color: #8b6f4c;
+            margin-top: 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: rgba(255,255,240,0.5);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(2px);
+            border: 1px solid #d2b48c;
         }
 
         .hero-date {
@@ -274,7 +330,7 @@
             opacity: 0.7;
         }
 
-        /* Стили для основного видео-блока с iframe — ВЕРТИКАЛЬНЫЙ ФОРМАТ 9:16 */
+        /* Стили для основного видео-блока */
         .video-story-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -499,8 +555,7 @@
                 max-width: 100%;
             }
             .hero-photo-frame {
-                width: 150px;
-                height: 150px;
+                width: 150px;  /* На мобильных ещё чуть меньше */
             }
             .btn-group {
                 flex-direction: column;
@@ -523,15 +578,20 @@
         </div>
     </nav>
 
-    <!-- ГЕРОЙ: ТЕПЕРЬ С ВИДЕО В КРУЖКЕ -->
+    <!-- ГЕРОЙ: УМЕНЬШЕННАЯ ВЕРТИКАЛЬНАЯ ДЕРЕВЯННАЯ РАМКА -->
     <section class="hero" id="hero">
         <div class="hero-content">
+            <!-- Уменьшенная рамка -->
             <div class="hero-photo-frame">
-                <div class="hero-video-container">
-                    <!-- То же видео, встроенное в кружок -->
-                    <iframe src="https://vkvideo.ru/video_ext.php?oid=-58879883&id=456239023&hash=6234ac0dcf5b05ba&hd=3&autoplay=1&loop=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+                <div class="wooden-frame">
+                    <div class="frame-video-container">
+                        <!-- Видео с автоплеем и зацикливанием -->
+                        <iframe src="https://vkvideo.ru/video_ext.php?oid=-58879883&id=456239023&hash=6234ac0dcf5b05ba&hd=3&autoplay=1&loop=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+                    </div>
                 </div>
+                <div class="frame-caption">📸 семейный архив · 1987</div>
             </div>
+
             <div class="hero-date">верните вкус того счастья</div>
             <h1>Обнимашки с прошлым</h1>
             <div class="hero-tagline">Оживите историю своей семьи. Увидьте родных «живыми» — улыбку, взгляд, поворот головы. Без страха искажений.</div>
@@ -597,11 +657,10 @@
         <p style="max-width: 700px; margin: 0 auto 40px; font-size: 1.2rem;">Не предлагаем скучную склейку. Мы создаём «Обнимашки с прошлым» — способ пережить эмоцию заново.</p>
     </section>
 
-    <!-- ОСНОВНОЙ ВИДЕО-БЛОК (дублируем видео для целостности) -->
+    <!-- ОСНОВНОЙ ВИДЕО-БЛОК -->
     <section class="container" id="how-video">
         <div class="video-story-grid">
             <div class="video-container">
-                <!-- То же видео, но в вертикальном контейнере -->
                 <iframe src="https://vkvideo.ru/video_ext.php?oid=-58879883&id=456239023&hash=6234ac0dcf5b05ba&hd=3&autoplay=1&loop=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
             </div>
             <div class="video-text">
