@@ -270,7 +270,7 @@
             opacity: 0.7;
         }
 
-        /* Новый стиль для видео-блока */
+        /* Стили для видео-блока с iframe */
         .video-story-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -288,12 +288,11 @@
             width: 100%;
         }
 
-        .video-container video {
+        .video-container iframe {
             width: 100%;
             height: 100%;
             display: block;
-            object-fit: cover;
-            pointer-events: none; /* чтобы видео не перехватывало клик, если нужно */
+            border: none;
         }
 
         .video-text {
@@ -508,7 +507,7 @@
         <a href="/" class="logo">обнимашки.с.прошлым</a>
         <div class="nav-links">
             <a href="#pain">боль</a>
-            <a href="#how-video">как оживим</a> <!-- обновлена ссылка -->
+            <a href="#how-video">как оживим</a>
             <a href="#tariffs">цены</a>
             <a href="#questions">вопросы</a>
             <a href="https://t.me/your_photo_bot" class="nav-cta" target="_blank">telegram</a>
@@ -586,14 +585,12 @@
         <p style="max-width: 700px; margin: 0 auto 40px; font-size: 1.2rem;">Не предлагаем скучную склейку. Мы создаём «Обнимашки с прошлым» — способ пережить эмоцию заново.</p>
     </section>
 
-    <!-- НОВЫЙ ВИДЕО-БЛОК "КАК МЫ ОЖИВЛЯЕМ ФОТО" (ВСТАВЛЕН ПЕРЕД БЛОКОМ ВОПРОСОВ) -->
+    <!-- НОВЫЙ ВИДЕО-БЛОК С iframe ОТ VK (вставлен перед блоком вопросов) -->
     <section class="container" id="how-video">
         <div class="video-story-grid">
             <div class="video-container">
-                <!-- ВСТАВКА ВИДЕО С VK: зациклено, без звука, без элементов управления, автостарт -->
-                <video src="https://vkvideo.ru/clip-58879883_456239020" autoplay loop muted playsinline style="width:100%; height:100%; object-fit: cover; pointer-events: none;"></video>
-                <!-- Примечание: VK видео не всегда даёт прямую ссылку на .mp4, но если ссылка ведёт на клип, такой формат может не работать. Для гарантии можно использовать iframe, но тогда зациклить сложнее. Если видео не загрузится, замените src на прямую mp4-ссылку. -->
-                <!-- Для надёжности я продублирую ссылку через тег iframe с параметрами, но с iframe сложнее управлять циклом. Лучше использовать прямой mp4, но на VK его получить сложно. Оставлю video src как есть, а если не сработает, вы сможете вставить прямую ссылку на файл .mp4. -->
+                <!-- ВСТАВЛЕННЫЙ КОД iframe С VKVIDEO -->
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-58879883&id=456239023&hash=6234ac0dcf5b05ba&hd=3" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
             </div>
             <div class="video-text">
                 <span class="subhead">смотрите сами</span>
