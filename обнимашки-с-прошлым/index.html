@@ -270,7 +270,7 @@
             opacity: 0.7;
         }
 
-        /* Стили для видео-блока с iframe */
+        /* Стили для видео-блока с iframe — ВЕРТИКАЛЬНЫЙ ФОРМАТ 9:16 */
         .video-story-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -284,8 +284,10 @@
             overflow: hidden;
             box-shadow: var(--shadow-hover);
             background: #000;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 9 / 16;  /* ВЕРТИКАЛЬНЫЙ ФОРМАТ 9:16 */
             width: 100%;
+            max-width: 400px; /* Ограничиваем ширину, чтобы вертикальное видео не было слишком широким на десктопе */
+            justify-self: center; /* Центрируем контейнер в своей ячейке сетки */
         }
 
         .video-container iframe {
@@ -489,6 +491,9 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
+            .video-container {
+                max-width: 100%; /* На мобильных убираем ограничение ширины */
+            }
             .hero-photo-frame {
                 width: 150px;
                 height: 150px;
@@ -585,7 +590,7 @@
         <p style="max-width: 700px; margin: 0 auto 40px; font-size: 1.2rem;">Не предлагаем скучную склейку. Мы создаём «Обнимашки с прошлым» — способ пережить эмоцию заново.</p>
     </section>
 
-    <!-- НОВЫЙ ВИДЕО-БЛОК С iframe ОТ VK (вставлен перед блоком вопросов) -->
+    <!-- ВИДЕО-БЛОК С iframe ОТ VK (ВЕРТИКАЛЬНЫЙ 9:16) -->
     <section class="container" id="how-video">
         <div class="video-story-grid">
             <div class="video-container">
